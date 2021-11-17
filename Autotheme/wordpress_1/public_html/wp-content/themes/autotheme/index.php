@@ -91,24 +91,24 @@
             <div class="container">
               <div class="row">
                 <div class="col">
-                  <a href="#" class="logo"><img src="<?php echo get_template_directory_uri()?>/img/logo.svg" alt="Автозапчасти" />ЛОГОТИП</a>
+                  <a href="#" class="logo"><img src="<?php the_field('logo_img'); ?>" alt="Автозапчасти" />ЛОГОТИП</a>
                 </div>
                 <div class="col">
                   <div class="time">
                     <img src="<?php echo get_template_directory_uri()?>/img/clock.svg" alt="" />
-                    ЧАСЫ РАБОТЫ:<br />пн-пт 9.00-18.00
+                    ЧАСЫ РАБОТЫ:<br /><?php the_field('opening_hours'); ?>
                   </div>
                 </div>
                 <div class="col">
                   <div class="mail">
                     <img src="<?php echo get_template_directory_uri()?>/img/email.svg" alt="" />
-                    E-MAIL<br /><a href="#">promo@studiosplav.ru</a>
+                    E-MAIL<br /><a href="#"><?php the_field('contact_mail'); ?></a>
                   </div>
                 </div>
                 <div class="col">
                   <div class="phone">
                     <img src="<?php echo get_template_directory_uri()?>/img/phone.svg" alt="" />
-                    ТЕЛЕФОН<br />+7(000)000-0000
+                    ТЕЛЕФОН<br /><?php the_field('contact_phone'); ?>
                   </div>
                 </div>
                 <div class="col">
@@ -125,8 +125,8 @@
                   <div class="row">
                     <div class="col-5">
                       <div class="header-composition">
-                        <h1 class="h1">Все для вашего авто<br />по выгодным ценам<br />в Москве</h1>
-                        <p>Бампера, габаритные товары, автозапчасти, автохимия и многое другое</p>
+                        <h1 class="h1"><?php the_title(); ?></h1>
+                        <?the_content(); ?>
                         <a href="#contact" id="header-button" class="button">ОСТАВИТЬ ЗАЯВКУ</a>
                       </div>
                     </div>
@@ -171,7 +171,8 @@
 
         <section class="services">
           <div class="container">
-            <h2 class="h2">МЫ ПРЕДЛАГАЕМ СЛЕДУЮЩИЕ УСЛУГИ:</h2>
+            <h2 class="h2"><?php the_field('servises_title'); ?></h2>
+            <h2 class="h2"><?php the_field('subtitle_text'); ?></h2>
             <p class="services-text">
               Все поставщики тщательно отобраны и проверены временем,<br />что полностью исключает риск приобретения
               контрафакта.
@@ -259,19 +260,11 @@
           <div class="container about-container">
             <div class="row">
               <div class="col-md-7 col-12">
-                <h2 class="h2">О НАШЕЙ КОМПАНИИ</h2>
-                <p>
-                  Наша компания уже более 10 лет работает на рынке города и области! У нас работают ПРОФЕССИОНАЛЫ
-                  высочайшего класса, которые смогут воплотить практически любую Вашу задумку в жизнь. Проводим
-                  предварительную консультацию.
-                </p>
-                <p>
-                  Наши цены весьма гибкие и лояльные, мы предлагаем различные сезонные акции, во время которых Вы можете
-                  получить скидку.
-                </p>
+                <h2 class="h2"><?php the_field('information'); ?></h2>
+                <?php the_field('information_text'); ?>
               </div>
               <div class="col-md-5 col-12 img-col">
-                <img src="<?php echo get_template_directory_uri()?>/img/about.png" alt="Наш магазин" />
+                <img src="<?php the_field('information_img'); ?>" alt="Наш магазин" />
               </div>
             </div>
           </div>
