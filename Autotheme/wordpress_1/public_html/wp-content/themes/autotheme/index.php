@@ -177,8 +177,67 @@
               Все поставщики тщательно отобраны и проверены временем,<br />что полностью исключает риск приобретения
               контрафакта.
             </p>
+
             <div class="container services-container">
               <div class="row services-row">
+
+              <?php		
+                global $post;
+
+                $query = new WP_Query( [
+                  'posts_per_page' => 6,
+                  'category_name' => 'services',
+                ] );
+
+                if ( $query->have_posts() ) {
+                  while ( $query->have_posts() ) {
+                    $query->the_post();
+                    ?>
+                    <p> <div class="col-lg-3 col-md-4 col-6 item">
+                  <div class="services-item">
+                    <div class="img-container">
+                      <div class="services-callback"></div>
+                      <div class="img" style="background-image: url(<?php the_field('services_img'); ?>); background-repeat: no-repeat; background-size: cover;"></div>
+                    </div>
+                    <p><?php the_title(); ?></p>
+                  </div>
+                </div> </p>
+                    <?php 
+                  }
+                } else {
+                  // Постов не найдено
+                }
+
+                wp_reset_postdata(); // Сбрасываем $post
+            ?>
+
+                <!-- <div class="col-lg-3 col-md-4 col-6 item">
+                  <div class="services-item">
+                    <div class="img-container">
+                      <div class="services-callback"></div>
+                      <div class="img"></div>
+                    </div>
+                    <p>автозапчасти для иномарок</p>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 item">
+                  <div class="services-item">
+                    <div class="img-container">
+                      <div class="services-callback"></div>
+                      <div class="img"></div>
+                    </div>
+                    <p>автохимия, присадки, антифризы</p>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-6 item">
+                  <div class="services-item">
+                    <div class="img-container">
+                      <div class="services-callback"></div>
+                      <div class="img"></div>
+                    </div>
+                    <p>трансмиссионные масла</p>
+                  </div>
+                </div>
                 <div class="col-lg-3 col-md-4 col-6 item">
                   <div class="services-item">
                     <div class="img-container">
@@ -214,43 +273,7 @@
                     </div>
                     <p>трансмиссионные масла</p>
                   </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6 item">
-                  <div class="services-item">
-                    <div class="img-container">
-                      <div class="services-callback"></div>
-                      <div class="img"></div>
-                    </div>
-                    <p>масла и фильтры (бесплатная замена)</p>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6 item">
-                  <div class="services-item">
-                    <div class="img-container">
-                      <div class="services-callback"></div>
-                      <div class="img"></div>
-                    </div>
-                    <p>автозапчасти для иномарок</p>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6 item">
-                  <div class="services-item">
-                    <div class="img-container">
-                      <div class="services-callback"></div>
-                      <div class="img"></div>
-                    </div>
-                    <p>автохимия, присадки, антифризы</p>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-6 item">
-                  <div class="services-item">
-                    <div class="img-container">
-                      <div class="services-callback"></div>
-                      <div class="img"></div>
-                    </div>
-                    <p>трансмиссионные масла</p>
-                  </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -349,10 +372,10 @@
               <div class="col-md-5 col-12 map-col">
                 <h2 class="h2 h2-contact">Наши контакты</h2>
                 <p class="contact-text">
-                  101000, г. Москва, Сусальный переулок 5, стр 18<br />
-                  Часы работы: пн-пт 9.00-18.00<br />
-                  Телефон : +7(000)000-0000<br />
-                  e-mail: <span>promo@studiosplav.ru</span>
+                  <?php the_field('addres'); ?><br />
+                  Часы работы: <?php the_field('opening_hours'); ?><br />
+                  Телефон : <?php the_field('contact_phone'); ?><br />
+                  e-mail: <span><?php the_field('contact_mail'); ?></span>
                 </p>
                 <div class="map">
                   <script
